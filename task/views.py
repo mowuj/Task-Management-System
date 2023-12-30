@@ -24,8 +24,9 @@ def edit_task(request,id):
         if task_form.is_valid():
             task_form.save()
             return redirect('add_task')
+    return render(request, 'add_task.html', {'form': task_form})
 
 def delete_task(request, id):
     task = Task.objects.get(pk=id)
     task.delete()
-    return redirect('homepage')
+    return redirect('home')
