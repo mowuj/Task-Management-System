@@ -8,7 +8,7 @@ def add_category(request):
         category_form=forms.CategoryForm(request.POST)
         if category_form.is_valid():
             category_form.save()
-            return redirect('home')
+            return redirect('add_category')
     else:
         category_form=forms.CategoryForm()
     return render(request,'add_category.html',{'form':category_form})

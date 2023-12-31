@@ -23,7 +23,7 @@ def edit_task(request,id):
         task_form = TaskForm(request.POST,instance=task)
         if task_form.is_valid():
             task_form.save()
-            return redirect('add_task')
+            return redirect('home')
     return render(request, 'add_task.html', {'form': task_form})
 
 def delete_task(request, id):
