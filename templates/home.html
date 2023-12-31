@@ -2,13 +2,17 @@
 
 {% block content %}
 <div class="container mt-5">
-    <div class="row">
+  <h1 class="text-center my-3">All Task Page</h1>
+    {% if data %}
+      <div class="row">
   {% for i in data %}
     <div class="col-sm-3 mb-3 mb-sm-0">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{i.task_title}}</h5>
-        <p class="card-text">{{i.task_description}}</p>
+        <h5 class="card-title">ID : {{i.id}}</h5>
+        <h5 class="card-title">Date : {{i.assigned_date | date:"d M Y"}}</h5>
+        <h5 class="card-title">Title : {{i.task_title}}</h5>
+        <p class="card-text">{{i.task_description |truncatewords:10}}</p>
         <p>
             {% for j in i.category.all %}
               <button class="btn btn-primary btn-sm disabled my-2">{{j.name}}</button>
@@ -26,5 +30,9 @@
   </div>
   {% endfor %}
 </div>
+
+  {% else %}
+  <h2 class="bg-warning text-center">Opps ! No Task Available</h2>
+    {% endif %}
 </div>
 {% endblock content %}
